@@ -1,6 +1,6 @@
 {
   "name": "@muchi-ui/muchi-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "Muchi UI Components",
   "main": "./dist/muchi-ui.js",
