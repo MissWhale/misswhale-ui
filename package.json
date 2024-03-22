@@ -1,16 +1,16 @@
 {
-  "name": "@muchi-ui/muchi-ui",
-  "version": "1.0.2",
+  "name": "@misswhale/ui",
+  "version": "0.0.2",
   "type": "module",
-  "description": "Muchi UI Components",
-  "main": "./dist/muchi-ui.js",
+  "description": "misswhale UI Components",
+  "main": "./dist/misswhale-ui.js",
   "styles": "./dist/style.css",
-  "module": "./dist/muchi-ui.umd.js",
-  "author": "MissWhale <doden5180@gmail.com>",
-  "license": "MIT",
+  "module": "./dist/misswhale-ui.umd.js",
+  "author": "MissWhale",
+  "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MissWhale/muchi-ui"
+    "url": "https://github.com/MissWhale/misswhale-ui"
   },
   "files": [
     "dist/",
@@ -18,8 +18,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/muchi-ui.js",
-      "require": "./dist/muchi-ui.umd.js"
+      "import": "./dist/misswhale-ui.js",
+      "require": "./dist/misswhale-ui.umd.js"
     },
     "./style.css": "./dist/style.css"
   },
@@ -34,7 +34,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "prepare": "husky install",
-    "release": "standard-version"
+    "release": "auto-changelog -p"
   },
   "dependencies": {
     "vue": "^3.4.21"
@@ -52,6 +52,7 @@
     "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/test-utils": "^2.4.4",
     "@vue/tsconfig": "^0.5.1",
+    "auto-changelog": "^2.4.0",
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",
     "husky": "^8.0.0",
@@ -61,7 +62,6 @@
     "prettier": "^3.0.3",
     "rollup-plugin-typescript2": "^0.36.0",
     "sass": "^1.71.1",
-    "standard-version": "^9.5.0",
     "typescript": "~5.4.0",
     "vite": "^5.1.5",
     "vite-plugin-dts": "^3.7.3",
