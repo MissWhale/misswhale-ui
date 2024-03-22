@@ -1,6 +1,6 @@
 {
   "name": "@misswhale/ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "misswhale UI Components",
   "main": "./dist/misswhale-ui.js",
