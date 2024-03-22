@@ -15,11 +15,11 @@ describe('MList', () => {
     const wrapper = mount(MList, {
       props: {
         list: [
-          { title: 'test1' },
-          { title: 'test2' },
-          { title: 'test3' },
-          { title: 'test4' },
-          { title: 'test5' }
+          { title: 'test1', value: 1 },
+          { title: 'test2', value: 2 },
+          { title: 'test3', value: 3 },
+          { title: 'test4', value: 4 },
+          { title: 'test5', value: 5 }
         ]
       }
     })

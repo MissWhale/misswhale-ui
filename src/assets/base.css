@@ -19,6 +19,12 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --primary: 26, 91, 255;
+  --secondary: 91, 133, 170;
+  --success: 70, 201, 58;
+  --error: 255, 71, 87;
+  --warning: 255, 186, 0;
 }
 
 /* semantic color variables for this project */
@@ -32,7 +38,7 @@
 
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
-
+  --color-active: var(--vt-c-black);
   --section-gap: 160px;
 }
 
@@ -47,6 +53,7 @@
 body {
   color: var(--color-text);
   background: var(--color-background);
+  --color-active: var(--color-active);
 }
 
 html.dark {
@@ -60,5 +67,11 @@ html.dark {
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
+    --color-active: var(--vt-c-white);
   }
+}
+.expand-enter-active,
+.expand-leave-active {
+  transition: height 0.5s ease-in-out;
+  overflow: hidden;
 }

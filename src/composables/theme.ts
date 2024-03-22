@@ -1,24 +1,38 @@
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
+export type Theme = string | null
+export const useTheme = () => {
+  const theme = ref<Theme>(localStorage?.getItem('muchi-theme') || null)
+  const classList = ref<DOMTokenList>(document.documentElement.classList)
 
-export function useTheme() {
-  const theme = ref(localStorage.getItem('theme'))
   onMounted(() => {
-    if (theme.value === 'null' || theme.value === null) {
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        changeTheme('dark')
-      } else {
-        changeTheme('light')
-      }
-    }
+    autoTheme()
   })
-  const changeTheme = (changeToTheme: string) => {
-    localStorage.setItem('muchi-theme', changeToTheme)
-    theme.value = changeToTheme
-    if (changeToTheme !== 'dark') document.documentElement.classList.toggle('dark')
+
+  const autoTheme = (): void => {
+    nextTick(() => {
+      if (theme.value === null) {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          setTheme('dark')
+        } else {
+          setTheme('light')
+        }
+      } else setTheme(theme.value)
+    })
   }
-  const toggleTheme = () => {
-    if (theme.value === 'light') changeTheme('dark')
-    else changeTheme('light')
+
+  const setTheme = (setToTheme: string): void => {
+    classList.value.remove(...['light', 'dark'].filter((t) => t !== setToTheme))
+    classList.value.add(setToTheme)
+    localStorage.setItem('muchi-theme', setToTheme)
+    theme.value = setToTheme
   }
-  return { theme, toggleTheme }
+
+  const toggleTheme = (): void => {
+    setTheme(theme.value === 'light' ? 'dark' : 'light')
+  }
+  return {
+    theme,
+    toggleTheme,
+    autoTheme
+  }
 }

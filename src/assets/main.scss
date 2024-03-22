@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+$primary: #1a5cff;
+$secondary: #5b85aa;
+$success: #46c93a;
+$error: #ff4757;
+$warning: #ffba00;
 body,
 span,
 p,
@@ -89,7 +94,7 @@ figure,
 figcaption,
 footer,
 header,
-hgroup,
+hisGroup,
 menu,
 nav,
 output,
@@ -113,7 +118,7 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
+hisGroup,
 menu,
 nav,
 section {
@@ -140,13 +145,4 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-article.page {
-  padding: 16px;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  max-width: 100%;
-  position: relative;
 }
