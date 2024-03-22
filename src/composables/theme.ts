@@ -1,7 +1,7 @@
 import { nextTick, onMounted, ref } from 'vue'
 export type Theme = string | null
 export const useTheme = () => {
-  const theme = ref<Theme>(localStorage?.getItem('muchi-theme') || null)
+  const theme = ref<Theme>(localStorage?.getItem('misswhale-theme') || null)
   const classList = ref<DOMTokenList>(document.documentElement.classList)
 
   onMounted(() => {
@@ -23,7 +23,7 @@ export const useTheme = () => {
   const setTheme = (setToTheme: string): void => {
     classList.value.remove(...['light', 'dark'].filter((t) => t !== setToTheme))
     classList.value.add(setToTheme)
-    localStorage.setItem('muchi-theme', setToTheme)
+    localStorage.setItem('misswhale-theme', setToTheme)
     theme.value = setToTheme
   }
 
