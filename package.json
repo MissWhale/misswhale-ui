@@ -34,7 +34,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "prepare": "husky install",
-    "release": "auto-changelog -p && git add CHANGELOG.md"
+    "release": "auto-changelog -p"
   },
   "dependencies": {
     "vue": "^3.4.21"
