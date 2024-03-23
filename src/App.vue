@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import MList from './components/MList/MList.vue'
+import MButton from './components/MButton/MButton.vue'
+import MLoading from './components/MLoading/MLoading.vue'
 import type { Size } from './composables/size'
 import { useTheme } from './composables/theme'
 const test = [
@@ -22,10 +24,13 @@ const size = ref<Size>('small')
 const { toggleTheme } = useTheme()
 const select = ref([{ title: 'test1', value: 1 }])
 const selectOne = ref([1])
+const testClick = (e: Event) => {
+  console.log(e)
+}
 </script>
 
 <template>
-  <div>
+  <div class="test">
     <MList :list="test" :size="size" color="primary"></MList>
     <MList
       :list="test"
@@ -36,13 +41,36 @@ const selectOne = ref([1])
       isSelect
     ></MList>
   </div>
+  <div class="test">
+    <MButton text="test" color="primary" size="small" @click="testClick" />
+    <MButton text="test" color="primary" size="small" loading @click="testClick" />
+    <MButton text="test" color="primary" disabled @click="testClick" />
+    <MButton text="test" color="primary" outline disabled @click="testClick" />
+    <MButton text="test" color="error" plain loading @click="testClick" />
+    <MButton text="test" color="primary" loading @click="testClick" />
+    <MButton text="test" color="error" @click="testClick" />
+    <MButton text="test" color="warning" size="big" @click="testClick" />
+    <MButton text="test" color="white" size="big" loading @click="testClick" />
+    <MButton
+      text="testtesttesttesttesttesttesttest"
+      color="#F2F232"
+      size="big"
+      block
+      @click="testClick"
+    />
+  </div>
+  <MLoading loading width="5" size="50" color="black" />
   <button @click="toggleTheme">토글</button>
 </template>
 
 <style scoped lang="scss">
 div {
-  display: block;
-  margin: 0 auto;
-  width: 400px;
+  &.test {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+    flex-direction: column;
+    row-gap: 10px;
+  }
 }
 </style>

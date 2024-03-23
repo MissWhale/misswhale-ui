@@ -9,3 +9,10 @@ export const sizeProps = {
     validator: (v: any) => allowedSize.includes(v)
   }
 }
+export function sizeReturnNumber(size: Number | String) {
+  if (typeof size === 'number') return size
+  else if (typeof size === 'string') {
+    if (size.includes('px')) return Number(size.replace(/px/g, ''))
+    else return Number(size)
+  } else return 0
+}
