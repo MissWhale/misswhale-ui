@@ -18,6 +18,7 @@ export const useColorStyle = (color: Color) => {
   const colorStyle = ref<{
     '--color': string
     '--text-color': string
+    '--color-active': string
     '--colorHex': string
   } | null>(null)
   const colorClass = ref<string | null>(null)
@@ -48,6 +49,7 @@ export const useColorStyle = (color: Color) => {
     colorStyle.value = {
       '--color': 'var(--primary)',
       '--text-color': '#FFFFFF',
+      '--color-active': 'var(--primary)',
       '--colorHex': 'var(--primaryHex)'
     }
   } else if (color === 'secondary') {
@@ -55,6 +57,7 @@ export const useColorStyle = (color: Color) => {
     colorStyle.value = {
       '--color': 'var(--secondary)',
       '--text-color': '#FFFFFF',
+      '--color-active': 'var(--secondary)',
       '--colorHex': 'var(--secondaryHex)'
     }
   } else if (color === 'success') {
@@ -62,6 +65,7 @@ export const useColorStyle = (color: Color) => {
     colorStyle.value = {
       '--color': 'var(--success)',
       '--text-color': '#FFFFFF',
+      '--color-active': 'var(--success)',
       '--colorHex': 'var(--successHex)'
     }
   } else if (color === 'error') {
@@ -69,6 +73,7 @@ export const useColorStyle = (color: Color) => {
     colorStyle.value = {
       '--color': 'var(--error)',
       '--text-color': '#FFFFFF',
+      '--color-active': 'var(--error)',
       '--colorHex': 'var(--errorHex)'
     }
   } else if (color === 'warning') {
@@ -76,16 +81,32 @@ export const useColorStyle = (color: Color) => {
     colorStyle.value = {
       '--color': 'var(--warning)',
       '--text-color': '#FFFFFF',
+      '--color-active': 'var(--warning)',
       '--colorHex': 'var(--warningHex)'
     }
   } else if (color === 'black') {
     colorClass.value = 'black'
-    colorStyle.value = { '--color': '#000000', '--text-color': '#FFFFFF', '--colorHex': '#000000' }
+    colorStyle.value = {
+      '--color': '#000000',
+      '--text-color': '#FFFFFF',
+      '--color-active': '#000000',
+      '--colorHex': '#000000'
+    }
   } else if (color === 'white') {
     colorClass.value = 'white'
-    colorStyle.value = { '--color': '#FFFFFF', '--text-color': '#000000', '--colorHex': '#FFFFFF' }
+    colorStyle.value = {
+      '--color': '#FFFFFF',
+      '--text-color': '#000000',
+      '--color-active': '#FFFFFF',
+      '--colorHex': '#FFFFFF'
+    }
   } else if (color)
-    colorStyle.value = { '--color': color, '--text-color': '#FFFFFF', '--colorHex': color }
+    colorStyle.value = {
+      '--color': color,
+      '--text-color': '#FFFFFF',
+      '--color-active': color,
+      '--colorHex': color
+    }
   return {
     colorStyle,
     colorClass,

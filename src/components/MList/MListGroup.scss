@@ -23,8 +23,9 @@ li.m-list-group {
   }
   &.opend {
     div.m-list-group-panel {
-      span.m-list-group-title {
-        color: var(--color-active);
+      span.m-list-group-title,
+      svg.m-list-group-icon {
+        color: rgba(var(--color), 1);
       }
     }
   }
