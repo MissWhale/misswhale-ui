@@ -1,6 +1,6 @@
 {
   "name": "@misswhale/ui",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "description": "misswhale UI Components",
   "main": "nuxt.js",
@@ -26,6 +26,7 @@
     "release": "auto-changelog -p"
   },
   "dependencies": {
+    "@nuxt/kit": "^3.11.1",
     "vue": "^3.4.21"
   },
   "devDependencies": {
