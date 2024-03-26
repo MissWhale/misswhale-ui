@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { useColorStyle } from '@/composables/color'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useColorStyle } from '../../composables'

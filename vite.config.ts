@@ -20,6 +20,12 @@ export default defineConfig({
       }
     }
   },
+  server: {
+    port: 3500,
+    watch: {
+      usePolling: true
+    }
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')

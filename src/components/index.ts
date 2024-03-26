@@ -2,4 +2,7 @@ import MIcon from './MIcon/MIcon.vue'
 import MList from './MList/MList.vue'
 import MListGroup from './MList/MListGroup.vue'
 import MListItem from './MList/MListItem.vue'
-export { MIcon, MList, MListGroup, MListItem }
+import MLoading from './MLoading/MLoading.vue'
+import MButton from './MButton/MButton.vue'
+import MInput from './MInput/MInput.vue'
+export { MIcon, MList, MListGroup, MListItem, MLoading, MButton, MInput }
