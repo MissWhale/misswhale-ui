@@ -1,34 +1,23 @@
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
-import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
-
+import vue from "@vitejs/plugin-vue";
+import * as path from "path";
+import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
 export default defineConfig({
-  plugins: [vue(), dts()],
-  build: {
-    lib: {
-      entry: 'src/index.ts',
-      name: 'Misswhale-ui',
-      fileName: 'misswhale-ui'
-    },
-    rollupOptions: {
-      external: ['vue'],
-      output: {
-        globals: {
-          vue: 'Vue'
-        }
-      }
-    }
-  },
-  server: {
-    port: 3500,
-    watch: {
-      usePolling: true
-    }
-  },
+  plugins: [
+    vue(),
+    dts({
+      insertTypesEntry: true,
+    }),
+  ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
-    }
-  }
-})
+      "@": path.resolve(__dirname, "package"),
+    },
+  },
+  server: {
+    watch: {
+      usePolling: true,
+    },
+    port: 3500,
+  },
+});
