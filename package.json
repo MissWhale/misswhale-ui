@@ -1,18 +1,12 @@
 {
   "name": "@misswhale/ui",
-  "version": "0.0.11",
-  "type": "module",
-  "description": "misswhale UI Components",
+  "version": "0.0.42",
+  "description": "test",
   "main": "nuxt.js",
+  "repository": "https://github.com/MissWhale/misswhale-ui",
   "author": "MissWhale",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/MissWhale/misswhale-ui"
-  },
-  "peerDependencies": {
-    "nuxt": "latest"
-  },
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -25,36 +19,26 @@
     "prepare": "husky install",
     "release": "auto-changelog -p"
   },
-  "dependencies": {
-    "@nuxt/kit": "^3.11.1",
-    "vue": "^3.4.21"
+  "files": [
+    "package/"
+  ],
+  "peerDependencies": {
+    "@iconify/vue": "latest",
+    "nuxt3": "latest"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.1.0",
     "@commitlint/config-conventional": "^19.1.0",
     "@iconify/vue": "^4.1.1",
-    "@rushstack/eslint-patch": "^1.3.3",
-    "@tsconfig/node20": "^20.1.2",
-    "@types/jsdom": "^21.1.6",
     "@types/node": "^20.11.25",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",
-    "@vue/test-utils": "^2.4.4",
-    "@vue/tsconfig": "^0.5.1",
-    "auto-changelog": "^2.4.0",
-    "eslint": "^8.49.0",
-    "eslint-plugin-vue": "^9.17.0",
     "husky": "^8.0.0",
     "prettier": "^3.0.3",
-    "rollup-plugin-typescript2": "^0.36.0",
-    "sass": "^1.71.1",
-    "typescript": "~5.4.0",
+    "sass": "^1.72.0",
     "vite": "^5.1.5",
     "vite-plugin-dts": "^3.7.3",
-    "vite-plugin-lib-inject-css": "^2.0.1",
-    "vite-plugin-vue-devtools": "^7.0.16",
-    "vitest": "^1.3.1",
-    "vue-tsc": "^2.0.6"
+    "vue": "3.4.21"
   }
 }
