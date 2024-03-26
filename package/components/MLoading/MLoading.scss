@@ -1,0 +1,28 @@
+div.m-loading {
+  position: relative;
+  &.is-loading {
+    svg {
+      animation: progress-circular-rotate 1.4s linear infinite;
+      transform-origin: center center;
+      transition: all 0.2s ease-in-out;
+      circle.m-loading-overlay {
+        animation: progress-circular-dash 1.4s ease-in-out infinite;
+        stroke-dasharray: 25, 200;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+      }
+    }
+  }
+  circle {
+    stroke: currentColor;
+    color: var(--colorHex);
+  }
+  circle.m-loading-underlay {
+    color: rgba(97, 97, 97, 0.2);
+  }
+  circle.m-loading-overlay {
+    transition:
+      all 0.2s ease-in-out,
+      stroke-width 0s;
+  }
+}
