@@ -1,6 +1,6 @@
 {
   "name": "@misswhale/ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "description": "misswhale UI Components",
   "main": "./dist/misswhale-ui.js",
@@ -37,6 +37,7 @@
     "release": "auto-changelog -p"
   },
   "dependencies": {
+    "vite-plugin-css-injected-by-js": "^3.5.0",
     "vue": "^3.4.21"
   },
   "devDependencies": {
