@@ -1,6 +1,6 @@
 import { getUid } from './currentInstance'
 import { ValidationRule } from './validation'
-import { computed, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 export const InputType = [
   'text',
   'date',
@@ -53,17 +53,18 @@ export const useInput = <T extends Record<string, any>, O extends DefaultInputEm
   const id = computed(() => props.id || `input-${uid}`)
   const firstInput = ref(false)
   const innerLoading = ref(false)
+  const isValidate = ref(true)
   const value = computed({
     get() {
       return props.modelValue
     },
     set(v: any) {
-      firstInput.value = true
       if (props.type === 'number') {
         if (v === 0) {
           emit('update:modelValue', 0)
         } else return emit('update:modelValue', Number(String(v).replace(/0[0-9]{0}/g, '')))
       } else emit('update:modelValue', v)
+      setValidate()
     }
   })
   const validate = computed({
@@ -75,18 +76,15 @@ export const useInput = <T extends Record<string, any>, O extends DefaultInputEm
     }
   })
   const validationRule = computed(() => {
-    return firstInput.value
-      ? props.rules
-          .map((x: ValidationRule) => {
-            if (typeof x === 'function') return x(value.value)
-            else return x
-          })
-          .filter((x: boolean) => x !== true)
-      : []
+    return props.rules
+      .map((x: ValidationRule) => {
+        if (typeof x === 'function') return x(value.value)
+        else return x
+      })
+      .filter((x: boolean) => x !== true) as Array<boolean | string>
   })
-  const isValidate = computed(() => !validationRule.value.length)
   const errorMessage = computed(() => {
-    if (validationRule.value.length) {
+    if (firstInput.value && validationRule.value.length) {
       return validationRule.value[0]
     } else {
       return null
@@ -98,9 +96,6 @@ export const useInput = <T extends Record<string, any>, O extends DefaultInputEm
     return ''
   })
   const isShowDetails = computed(() => !props.hideDetails && hint.value)
-  watch(isValidate, () => {
-    validate.value = isValidate.value
-  })
   const isClearable = computed(() => !!value.value && props.clearable)
   const loading = computed({
     get() {
@@ -115,5 +110,31 @@ export const useInput = <T extends Record<string, any>, O extends DefaultInputEm
     validate.value = false
     firstInput.value = false
   }
-  return { value, validate, isValidate, id, hint, isShowDetails, clearClick, isClearable, loading }
+  async function setValidate() {
+    nextTick(() => {
+      const tempValidate = !validationRule.value.length
+      validate.value = !validationRule.value.length
+      isValidate.value = tempValidate
+      firstInput.value = true
+    })
+  }
+  function resetInput() {
+    value.value = null
+    isValidate.value = false
+    validate.value = null
+    firstInput.value = false
+  }
+  return {
+    value,
+    validate,
+    isValidate,
+    id,
+    hint,
+    isShowDetails,
+    clearClick,
+    isClearable,
+    loading,
+    setValidate,
+    resetInput
+  }
 }
