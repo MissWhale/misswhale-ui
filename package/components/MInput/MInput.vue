@@ -1,33 +1,33 @@
 <script setup lang="ts" generic="T extends any">
-import { computed, type PropType, defineProps } from "vue";
+import { computed, type PropType, defineProps } from 'vue'
 import {
   DefaultInputProps,
   type DefaultInputEmits,
   InputType,
-  useInput,
-} from "../../composables/input";
-import { sizeProps, useColorStyle } from "../../composables";
-import MIcon from "../MIcon/MIcon.vue";
-import MLoading from "../MLoading/MLoading.vue";
-import "../../assets/base.css";
-import "../../assets/main.scss";
-import "./MInput.scss";
-const emit = defineEmits<DefaultInputEmits>();
+  useInput
+} from '../../composables/input'
+import { sizeProps, useColorStyle } from '../../composables'
+import MIcon from '../MIcon/MIcon.vue'
+import MLoading from '../MLoading/MLoading.vue'
+import '../../assets/base.css'
+import '../../assets/main.scss'
+import './MInput.scss'
+const emit = defineEmits<DefaultInputEmits>()
 const props = defineProps({
   modelValue: {
     type: [String, Number, null, File, Blob, Object] as PropType<T>,
     default: null,
-    required: true,
+    required: true
   },
   type: {
     type: String,
-    default: "text",
+    default: 'text',
     required: false,
-    validator: (prop: string): boolean => InputType.includes(prop),
+    validator: (prop: string): boolean => InputType.includes(prop)
   },
   ...DefaultInputProps,
-  ...sizeProps,
-});
+  ...sizeProps
+})
 const {
   value,
   isValidate,
@@ -36,18 +36,24 @@ const {
   isShowDetails,
   isClearable,
   clearClick,
-  loading,
-} = useInput(props, emit);
-const { colorStyle, colorClass } = useColorStyle(props.color);
+  setValidate,
+  resetInput,
+  loading
+} = useInput(props, emit)
+const { colorStyle, colorClass } = useColorStyle(props.color)
 const styleClass = computed(() => [
   props.size,
   {
     disabled: props.disabled,
     placeholder: !!props.placeholder,
-    "not-validate": !isValidate.value,
+    'not-validate': !isValidate.value
   },
-  colorClass.value,
-]);
+  colorClass.value
+])
+defineExpose({
+  setValidate,
+  resetInput
+})
 </script>
 
 <template>
